@@ -5,7 +5,7 @@ Just want to use this software for OPENSSL_VERSION_NUMBER >= 0x10100000L
 
 This it was I do to compile mal qmail-ldap:
 
-
+```
 portsnap fetch update
 cd /usr/ports/mail
 rm -rf qmail-ldap/
@@ -15,5 +15,6 @@ make extract
 make patch
 make
 make install
+```
 
 Try this on your own risk. Works for me.
