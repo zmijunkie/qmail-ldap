@@ -34405,13 +34405,13 @@ diff -upN qmail-1.03/qmail-smtpd.c qmail-ldap/qmail-smtpd.c
 +}
 +
 +#ifdef TLS_SMTPD
-+RSA *tmp_rsa_cb(SSL *s,int export,int keylength) 
++RSA *tmp_rsa_cb(SSL *s,int export,int keylength)
 +{
 +  RSA* rsa;
 +  BIO* in;
 +
 +  if (!export || keylength == 512)
-+   if ((in=BIO_new(BIO_s_file_internal())))
++   if ( in = BIO_new(BIO_s_file()) )
 +    if (BIO_read_filename(in,"control/rsa512.pem") > 0)
 +     if ((rsa=PEM_read_bio_RSAPrivateKey(in,NULL,NULL,NULL)))
 +      return rsa;
