@@ -1,0 +1,13 @@
+#!/bin/sh -x
+
+cp -p qmail-ldap-1.03-20190303.patch qmail-ldap-1.03-20190303.patch.copy
+gzip -9 qmail-ldap-1.03-20190303.patch.copy
+mv qmail-ldap-1.03-20190303.patch.copy.gz /usr/ports/distfiles/qmail/qmail-ldap-1.03-20190303.patch.gz
+
+grep -v qmail/qmail-ldap-1.03-20190303.patch.gz /usr/ports/mail/qmail-ldap/../qmail/distinfo > new_distinfo
+
+sha256 /usr/ports/distfiles/qmail/qmail-ldap-1.03-20190303.patch.gz|awk '{ print "SHA256 (qmail/qmail-ldap-1.03-20190303.patch.gz) = " $1 }' >>new_distinfo
+wc -c /usr/ports/distfiles/qmail/qmail-ldap-1.03-20190303.patch.gz |awk '{ print "SIZE (qmail/qmail-ldap-1.03-20190303.patch.gz) = " $1 }' >>new_distinfo
+
+mv new_distinfo /usr/ports/mail/qmail-ldap/../qmail/distinfo
+
